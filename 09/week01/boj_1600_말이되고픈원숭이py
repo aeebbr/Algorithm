@@ -29,7 +29,6 @@ def bfs(sr, sc):
 
             if 0 <= dir <= 7:
                 # horse > k로 하면 말 증가할 수 없음 
-                # 최대 
                 if horse >= k:
                     continue
                 nh += 1
