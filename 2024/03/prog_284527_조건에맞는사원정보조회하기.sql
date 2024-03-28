@@ -1,0 +1,21 @@
+-- 코드를 작성해주세요
+SELECT 
+    # *
+    SUM(G.SCORE) AS SCORE, 
+    E.EMP_NO, 
+    E.EMP_NAME, 
+    E.POSITION, 
+    E.EMAIL
+FROM 
+    (HR_DEPARTMENT AS D
+    JOIN HR_EMPLOYEES AS E
+    ON D.DEPT_ID = E.DEPT_ID)
+    JOIN HR_GRADE AS G
+    ON E.EMP_NO = G.EMP_NO
+WHERE 
+    G.YEAR = 2022
+GROUP BY 
+    G.EMP_NO
+ORDER BY 
+    SCORE DESC
+LIMIT 1
