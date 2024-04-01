@@ -1,0 +1,15 @@
+-- 코드를 작성해주세요
+SELECT 
+    # *
+    QUARTER, 
+    COUNT(*) AS ECOLI_COUNT
+FROM 
+    (
+        SELECT *, 
+        CONCAT(TRUNCATE(((MONTH(DIFFERENTIATION_DATE) - 1) / 3), 0) + 1, 'Q') AS QUARTER
+        FROM ECOLI_DATA
+    ) AS A
+GROUP BY 
+    QUARTER
+ORDER BY 
+    QUARTER
