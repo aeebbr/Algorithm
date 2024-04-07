@@ -29,5 +29,5 @@ def solution(n, edge):
         linked_list[a].append(b)
         linked_list[b].append(a)
     
-    return bfs(n, edge, linked_list)
+    return bfs(n, edge, linked_list) 
     
