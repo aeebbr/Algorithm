@@ -1,3 +1,46 @@
+from collections import deque
+
+def solution(tickets):
+    answer = []
+    
+    tickets.sort(key = lambda x: (x[0], x[1]))
+        
+    q = deque()
+    # (현재 탐색 중인 경로, 남은 티켓)
+    q.append((["ICN"], tickets))
+    
+    while q:
+        now_path, left_t = q.popleft()
+        
+        if len(left_t) == 0:
+            answer = now_path
+            break
+            
+        valid_idx = -1
+        
+        for i in range(len(left_t)):
+            # 마지막 도착지에서 출발하는 것이라면
+            if left_t[i][0] == now_path[-1]:
+                valid_idx = i
+                # print(i, now_path[-1], left_t)
+                break
+                
+        # 다른 곳으로 가는 티켓이 없다면 잘못된 경로임 
+        if valid_idx == -1:
+            continue
+            
+        while valid_idx < len(left_t) and left_t[valid_idx][0] == now_path[-1]:
+            q.append((now_path + [left_t[valid_idx][1]], left_t[:valid_idx] + left_t[valid_idx+1:]))
+            
+            # print(valid_idx, q)
+            
+            valid_idx += 1
+        # print()   
+    
+    return answer
+
+'''
+# dfs
 def solution(tickets):
     answer = []
     
@@ -40,4 +83,4 @@ def solution(tickets):
         
         return []
     
-    return getPath(tickets, ["ICN"])
+    return getPath(tickets, ["ICN"])'''
