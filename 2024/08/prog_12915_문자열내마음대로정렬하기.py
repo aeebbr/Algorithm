@@ -7,8 +7,6 @@ def solution(strings, n):
         
     tmp = list(zip(s, strings))
     
-    tmp.sort()
-    
     for t in tmp:
         answer.append(t[1])
     
