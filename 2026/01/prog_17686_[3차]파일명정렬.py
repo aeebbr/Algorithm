@@ -14,9 +14,7 @@ tail은 정렬에 영향을 미치지 않음
 def solution(files):
     sorted_arr = []
     
-    # head, number 분리 
     for file in files:
-        # number를 기준으로 나누기 
         head, number = '', ''
         
         for i in range(len(file)):
